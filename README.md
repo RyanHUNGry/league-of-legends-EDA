@@ -131,4 +131,4 @@ Let's go justify each individual decision we made for our hypothesis test:
 
 <iframe src="assets/hypoth.html" width=800 height=600 frameBorder=0>s</iframe>
 
-Our p-value was 1.0, so we reject the null. Since we reject the null hypothesis that the low mean value of `dragons` for the Fall `split` was due to random chance, we show significant statistical evidence that `dragons` and `split` are potentially related. This potential connection could show that team's value dragons differently in a certain `split`. The variation could have underlying confounding factors such as meta shifts, game durations, buffs/nerfs, and map updates.
+Our p-value was 0.0, so we reject the null. Since we reject the null hypothesis that the low mean value of `dragons` for the Fall `split` was due to random chance, we show significant statistical evidence that `dragons` and `split` are potentially related. This potential connection could show that team's value dragons differently in a certain `split`. The variation could have underlying confounding factors such as meta shifts, game durations, buffs/nerfs, and map updates.
