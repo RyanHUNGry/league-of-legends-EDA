@@ -54,8 +54,9 @@ To answer our main question, let's see how the value of `dragons` has shifted ov
 <iframe src="assets/fig_bivariate_1.html" width=800 height=600 frameBorder=0>s</iframe>
 
 ### Interesting Aggregates:
-
 We wanted to see if getting the first dragon increased a team's chance of winning. The columns `False` and `True` denote whether or not a team has killed the first dragon. The index `result` denote whether or not a team has won the game. The pivot table shown below is actually a concatenation of two pivot table, one for each team `side`. The proportions inside shown the conditional probability **P(Winning | First Dragon)**.
+
+
 
 | result   |    False |     True | team   |
 |:---------|---------:|---------:|:-------|
