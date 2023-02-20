@@ -7,7 +7,7 @@ This exploratory data analysis employs **[Oracle Elixir's](https://oracleselixir
 
 The dragon is one of the most pivotal objectives in the game as it provides powerful buffs to the team that claims its souls. Thus, having solid macro and map control to ensure dragon kills is crucial for high level competitive play, where teams can use any sliver of advantage they can get. 
 
-This exploratory data analysis focuses on how the value of dragons have shifted by split - is there a variation in dragon kills by split? It will also focus on analyzing the overall impact dragons have in a competitive match.
+This exploratory data analysis focuses on how the value of dragons have shifted by split - **is there a variation in dragons killed in split**? It will also focus on analyzing the overall impact dragons have in a competitive match.
 
 ### Data summary:
 The dataset consists of 149232 rows and 123 columns. The first 10 rows consists of player rows - 5 players from each team. The 11th and 12th columns consists of team rows. Thus, the first 12 rows make up the data for a match. The same pattern follows for the remaining rows.
@@ -123,6 +123,12 @@ Test statistic: Average `dragons` killed
 
 Significance level: 0.05
 
+Let's go justify each individual decision we made for our hypothesis test:
+- For null hypothesis, we state that `dragons` and `split` aren't related and that the low number of dragons killed during the Fall split was random. If `dragons` and `split` are potentially unrelated, then we can assume that teams value killing dragons the same in other splits
+- For alternative hypothesis, we state that `dragons` and `split` are related. If `dragons` and `split` are potentially related, then we can assume that teams value killing dragons differently in different splits
+- For the test statistic, we use the average `dragons` killed. We obtain this statistc by sampling from our parent dataset under the null. Small values of this statistic will point in the direction of the alternative because we our question is phrased in such a way that we are checking for smaller quantities
+- For significance level, we chose the standard 0.05 confidence level
+
 <iframe src="assets/hypoth.html" width=800 height=600 frameBorder=0>s</iframe>
 
-Since we reject the null hypothesis that the low mean value of `dragons` for the Fall `split` was due to random chance, we show significant statistical evidence that `dragons` and `split` are potentially related. This potential connection could show that team's value dragons differently in a certain `split`. The variation could also be caused by many confounding factors such as meta shifts, game durations, buffs/nerfs, and map updates.
+Our p-value was 1.0, so we reject the null. Since we reject the null hypothesis that the low mean value of `dragons` for the Fall `split` was due to random chance, we show significant statistical evidence that `dragons` and `split` are potentially related. This potential connection could show that team's value dragons differently in a certain `split`. The variation could have underlying confounding factors such as meta shifts, game durations, buffs/nerfs, and map updates.
