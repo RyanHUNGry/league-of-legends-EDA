@@ -109,3 +109,20 @@ Our p-value is 1.0 so we fail to reject the null. Since we fail to reject the nu
 ---
 ## Hypothesis testing:
 ### Answering the question:
+Our specific question was: how have dragons been valued over time? We can gain more insight into this question by looking at the mean number of `dragons` killed per split, and seeing if any variations occurred. Per our bivariate analysis above, We can see that the Fall split had the lowest mean number of dragons killed by 1.827.
+
+<iframe src="assets/fig_bivariate_1.html" width=800 height=600 frameBorder=0>s</iframe>
+
+Let's conduct a hypothesis test to see if the mean number of `dragons` killed during the Fall split was lower than the other averages due to lower chance. That is, `dragons` and `split` aren't related - and thus the importance of dragons is potentially not related to the split.
+
+Null hypothesis: `dragons` and `split` are not related - the low average number of dragons killed during the Fall is due to random chance
+
+Alternative hypothesis: `dragons` and `split` are related - the low average number of dragons killed during the Fall is not due to random chance
+
+Test statistic: Average `dragons` killed
+
+Significance level: 0.05
+
+<iframe src="assets/hypoth.html" width=800 height=600 frameBorder=0>s</iframe>
+
+Since we reject the null hypothesis that the low mean value of `dragons` for the Fall `split` was due to random chance, we show significant statistical evidence that `dragons` and `split` are potentially related. This potential connection could show that team's value dragons differently in a certain `split`. The variation could also be caused by many confounding factors such as meta shifts, game durations, buffs/nerfs, and map updates.
