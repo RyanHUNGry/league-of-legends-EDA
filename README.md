@@ -110,7 +110,7 @@ Our p-value is 1.0 so we fail to reject the null. Since we fail to reject the nu
 ---
 ## Hypothesis testing:
 ### Answering the question:
-Our specific question was: how have dragons been valued over time? We can gain more insight into this question by looking at the mean number of `dragons` killed per split, and seeing if any variations occurred. Per our bivariate analysis above, We can see that the Fall split had the lowest mean number of dragons killed by 1.827.
+Our specific question was: **is there a variation in dragons killed in split**? We can gain more insight into this question by looking at the mean number of `dragons` killed per split, and seeing if any variations occurred. Per our bivariate analysis above, we can see that the Fall split had the lowest mean number of dragons killed by 1.827.
 
 <iframe src="assets/fig_bivariate_1.html" width=800 height=600 frameBorder=0>s</iframe>
 
