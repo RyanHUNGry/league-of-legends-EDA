@@ -102,7 +102,7 @@ Test statistic: Total variation distance
 Significance level: 0.05
 
 <iframe src="assets/NOT_MAR.html" width=800 height=600 frameBorder=0>s</iframe>
-<iframe src="assets/NOT_MAR_ts.html" width=800 height=600 frameBorder=0>s</iframe>
+<iframe src="assets/NOT_MAR_TS.html" width=800 height=600 frameBorder=0>s</iframe>
 
 Our p-value is 1.0 so we fail to reject the null. Since we fail to reject the null hypothesis that the two distributions are similar, we have statistical evidence that `elder`, potentially, isn't MAR dependent on `side`. However, this conclusion isn't absolute! 
 
