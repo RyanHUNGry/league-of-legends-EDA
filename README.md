@@ -2,7 +2,6 @@
 ### Creator: Ryan Hung
 ---
 ## Introduction:
----
 ### Question summary:
 This exploratory data analysis employs **[Oracle Elixir's](https://oracleselixir.com/tools/downloads)** dataset consisting of player and team data from the 2022 League of Legends competitive season. 
 
@@ -23,10 +22,10 @@ Relevant columns that we address in our processing and analysis include:
 7. `infernals`, `mountains`, `clouds`, `chemtechs`, `hextechs`, `elders` - The total number of dragons of each type killed
 8. `date` - The date that the match was played on
 9. `position` - The lane position of a player or simply team for team rows
+10. `teamname` - The name of the team
 
 ---
 ## Cleaning and EDA:
----
 ### Data cleaning:
 1. First, our analysis focuses on team performance with respect to dragons so we filtered out all rows that consisted of player data
     - For this, we queried all rows that had the value "team" in the `position` column - this is based on the data generating process that produced this dataset
@@ -53,3 +52,23 @@ To better understand the importance of the dragon objective, we can graph the nu
 ### Bivariate Analysis:
 To answer our main question, let's see how the value of `dragons` has shifted over time. Specifically, how has the mean number of dragons killed varied by split over the 2022 competitive season? In the bar plot below, we can see that the Fall split had the lowest mean number of dragons killed by 1.827.
 <iframe src="assets/fig_bivariate_1.html" width=800 height=600 frameBorder=0>s</iframe>
+
+### Interesting Aggregates:
+
+We wanted to see if getting the first dragon increased a team's chance of winning. The columns `False` and `True` denote whether or not a team has killed the first dragon. The index `result` denote whether or not a team has won the game. The pivot table shown below is actually a concatenation of two pivot table, one for each team `side`. The proportions inside shown the conditional probability **P(Winning | First Dragon)**.
+| result   |    False |     True | team   |
+|:---------|---------:|---------:|:-------|
+| False    | 0.52774  | 0.377525 | blue   |
+| True     | 0.47226  | 0.622475 | blue   |
+| False    | 0.596116 | 0.454819 | red    |
+| True     | 0.403884 | 0.545181 | red    |
+
+The trend in this table is that killing first dragon always increases the chances of winning for both team colors - and it also means that not killing the first dragon increases the chances of losing for both team colors. To better visualize this, we provide a bar plot.
+<iframe src="assets/aggregate.html" width=800 height=600 frameBorder=0>s</iframe>
+
+---
+## Assessment of Missingness:
+### NMAR Analysis:
+We can argue that `teamname` is NMAR. This is because the missingness of `teamname` is dependent on the value of `teamname` itself. The likely reason for this missingness can be attributed to the fact that perhaps new teams simply do not have an established name, and so the missingness of their name depends on them not having a name. To make `teamname` MAR, we can perhaps add a new column of data called `teamage` which shows how long a team has been together. Thus, if `teamname` is missing, the distribution of `teamage` would be less than that of `teamage` if `teamname` exists.
+
+### Missingness Dependency:
