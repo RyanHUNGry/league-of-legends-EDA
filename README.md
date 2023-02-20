@@ -56,6 +56,7 @@ To answer our main question, let's see how the value of `dragons` has shifted ov
 ### Interesting Aggregates:
 
 We wanted to see if getting the first dragon increased a team's chance of winning. The columns `False` and `True` denote whether or not a team has killed the first dragon. The index `result` denote whether or not a team has won the game. The pivot table shown below is actually a concatenation of two pivot table, one for each team `side`. The proportions inside shown the conditional probability **P(Winning | First Dragon)**.
+
 | result   |    False |     True | team   |
 |:---------|---------:|---------:|:-------|
 | False    | 0.52774  | 0.377525 | blue   |
@@ -72,3 +73,39 @@ The trend in this table is that killing first dragon always increases the chance
 We can argue that `teamname` is NMAR. This is because the missingness of `teamname` is dependent on the value of `teamname` itself. The likely reason for this missingness can be attributed to the fact that perhaps new teams simply do not have an established name, and so the missingness of their name depends on them not having a name. To make `teamname` MAR, we can perhaps add a new column of data called `teamage` which shows how long a team has been together. Thus, if `teamname` is missing, the distribution of `teamage` would be less than that of `teamage` if `teamname` exists.
 
 ### Missingness Dependency:
+##### Dependent testing
+The elder dragon only spawns after one team has killed all four elemental dragons. Thus, the elder dragon typically only appears in games that are longer. Because of this assumption, we can check if `elders` is MAR dependent on `gamelength` using a permutation test.
+
+Null: The distribution of `gamelength` is the same when `elders` is missing and when `elders` is not missing
+
+Alternative: The distribution of `gamelength` is different when `elders` is missing and when `elders` is not missing
+
+Test statistic: Absolute difference of group means
+
+Significance level: 0.05
+
+<iframe src="assets/MAR.html" width=800 height=600 frameBorder=0>s</iframe>
+<iframe src="assets/MAR_ts.html" width=800 height=600 frameBorder=0>s</iframe>
+
+Our p-value is 0.0 so we reject the null. Since we reject the null hypothesis that the two distributions are similar, we show statistical evidence that `elder` is, potentially, MAR dependent on `gamelength`. However, this isn't an absolute conclusion! 
+
+##### Not dependent testing
+
+Now, we can perform another permutation test on `elders` missingness and `side` because we can follow the reasoning that `elders` is not MAR dependent on `side`. This is because, in our data, every pair of rows consists of a match between two teams. These two teams are separated into a blue and red side and so the distribution of `side` will always be 50/50 regardless of whether `elders` is missing. However, we can still run a permutation test to have stronger statistical evidence for this logic.
+
+Null: The distribution of `side` is the same when `elders` is missing and when `elders` is not missing
+
+Alternative: The distribution of `side` is different when `elders` is missing and when `elders` is not missing
+
+Test statistic: Total variation distance
+
+Significance level: 0.05
+
+<iframe src="assets/NOT_MAR.html" width=800 height=600 frameBorder=0>s</iframe>
+<iframe src="assets/NOT_MAR_ts.html" width=800 height=600 frameBorder=0>s</iframe>
+
+Our p-value is 1.0 so we fail to reject the null. Since we fail to reject the null hypothesis that the two distributions are similar, we have statistical evidence that `elder`, potentially, isn't MAR dependent on `side`. However, this conclusion isn't absolute! 
+
+---
+## Hypothesis testing:
+### Answering the question:
