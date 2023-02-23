@@ -7,7 +7,7 @@ This exploratory data analysis employs **[Oracle Elixir's](https://oracleselixir
 
 The dragon is one of the most pivotal objectives in the game as it provides powerful buffs to the team that claims its souls. Thus, having solid macro and map control to ensure dragon kills is crucial for high level competitive play, where teams can use any sliver of advantage they can get. 
 
-This exploratory data analysis focuses on how the value of dragons have shifted by split - **is there a variation in dragons killed in split**? It will also focus on analyzing the overall impact dragons have in a competitive match.
+This exploratory data analysis focuses on how the value of dragons have shifted by split - **is there a variation in dragons killed in different splits**? It will also focus on analyzing the overall impact dragons have in a competitive match.
 
 ### Data summary:
 The dataset consists of 149232 rows and 123 columns. The first 10 rows consists of player rows - 5 players from each team. The 11th and 12th columns consists of team rows. Thus, the first 12 rows make up the data for a match. The same pattern follows for the remaining rows.
